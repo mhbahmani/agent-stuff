@@ -41,7 +41,7 @@ fi
 for base_path in "${SEARCH_PATHS[@]}"; do
     if [[ -d "$base_path" ]]; then
         # Find analyzeHeadless in the directory tree (handles versioned paths)
-        HEADLESS=$(find "$base_path" -name "*analyzeHeadless" -executable 2>/dev/null | head -n 1)
+        HEADLESS=$(find "$base_path" -name "*analyzeHeadless" -xtype f 2>/dev/null | head -n 1)
         if [[ -n "$HEADLESS" && -x "$HEADLESS" ]]; then
             echo "$HEADLESS"
             exit 0
